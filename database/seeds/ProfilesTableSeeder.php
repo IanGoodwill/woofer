@@ -21,7 +21,7 @@ class ProfilesTableSeeder extends Seeder
                 'username' => $faker->name,
                 'picture' => $faker->imageUrl($width = 640, $height = 480),
                 'bio' => $faker->paragraph,
-                'user_id' => $faker->unique()->randomElement(User::pluck('id')->toArray()),
+                'user_id' => $faker->unique()->randomElement(User::pluck( 'id' )->toArray()),
             ));
     }
 

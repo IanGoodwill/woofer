@@ -10,6 +10,6 @@ $factory->define(Post::class, function (Faker $faker) {
     return [
         'content' => $faker->paragraph,
         'picture' => $faker->imageUrl($width = 640, $height = 480),
-        'user_id' => $faker->randomElement(User::pluck('id')->toArray()),
+        'user_id' => $faker->randomElement(User::pluck( 'id' )->toArray()),
     ];
 });

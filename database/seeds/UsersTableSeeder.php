@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => $faker->password,
-                'created_at' => date("Y-m-d H:i:s"),
+                'created_at' => date( "Y-m-d H:i:s" ),
             ));
     }
 

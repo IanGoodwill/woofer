@@ -10,6 +10,6 @@ $factory->define(Profile::class, function (Faker $faker) {
     return [
         'username' => $faker->name,
         'bio' => $faker->paragraph,
-        'user_id' => $faker->unique()->randomElement(User::pluck('id')->toArray()),
+        'user_id' => $faker->unique()->randomElement(User::pluck( 'id' )->toArray()),
     ];
 });
