@@ -45,7 +45,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        if ( $user = Auth::user() ) //only store data if user is logged in. demonstrating differnt way to store user
+        if ( $user = Auth::user() ) //only store data if user is logged in. 
         {
 
         $validatedData = $request->validate(array( 
@@ -55,8 +55,8 @@ class PostController extends Controller
         ));
 
         $post = new Post();
-        $post->user_id = $user->id;
-        $post->message = $validatedData['message'];
+        $post->profile_id = $profile->id;
+        $post->content = $validatedData['content'];
         $post->save();
         
     
@@ -90,10 +90,10 @@ class PostController extends Controller
     public function edit($id)
     {
         if ( $user = Auth::user() ) {
-            $tweet = Tweet::findOrFail($id);
-            return view( 'tweets.edit', compact('tweet') );
+            $post = Post::findOrFail($id);
+            return view( 'posts.edit', compact('post') );
         }
-        return redirect('/tweets');
+        return redirect('/posts');
     }
 
     /**
@@ -105,7 +105,15 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ( $user = Auth::user() ) {
+            $validatedData = $request->validate(array( 
+                'content' => 'required|max:255',
+             ));
+    
+             Post::whereId($id)->update($validatedData);
+             return redirect('/posts')->with('success', 'Post updated.');
+            }
+            return redirect('/posts');
     }
 
     /**
@@ -116,6 +124,14 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ( $user = Auth::user() ) {
+            $post = Post::findOrFail($id);
+    
+            $post->delete();
+    
+            return redirect('/posts')->with('success', 'Post deleted.');
+        }
+        return redirect('/posts');
     }
-}
+    }
+

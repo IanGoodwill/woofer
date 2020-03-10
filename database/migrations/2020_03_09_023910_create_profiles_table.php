@@ -19,6 +19,7 @@ class CreateProfilesTable extends Migration
             $table->longText( 'bio' );
             $table->string( 'picture' );
             $table->unsignedBigInteger( 'user_id' )->nullable();
+            $table->rememberToken();
             $table->timestamps();
 
             $table->foreign( 'user_id' )
