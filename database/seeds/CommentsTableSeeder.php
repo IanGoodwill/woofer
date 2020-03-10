@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory;
-use App\User;
+use App\Profile;
 use App\Post;
 
 class CommentsTableSeeder extends Seeder
@@ -20,7 +20,7 @@ class CommentsTableSeeder extends Seeder
         foreach( range(1, 10) as $index ) {
             DB::table( 'comments' )->insert( array(
                 'content' => $faker->paragraph,
-                'user_id' => $faker->randomElement(User::pluck( 'id' )->toArray()),
+                'profile_id' => $faker->randomElement(Profile::pluck( 'id' )->toArray()),
                 'post_id' => $faker->randomElement(Post::pluck( 'id' )->toArray()),
             ));
     }

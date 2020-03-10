@@ -17,12 +17,12 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string( 'picture' );
             $table->longText( 'content' );
-            $table->unsignedBigInteger( 'user_id' );
+            $table->unsignedBigInteger( 'profile_id' )->nullable();
             $table->timestamps();
 
-            $table->foreign( 'user_id' )
+            $table->foreign( 'profile_id' )
                 ->references( 'id' )
-                ->on( 'users' )
+                ->on( 'profiles' )
                 ->onDelete( 'cascade' );
         });
     }

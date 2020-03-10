@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory;
-use App\User;
+use App\Profile;
 
 class PostsTableSeeder extends Seeder
 {
@@ -20,7 +20,7 @@ class PostsTableSeeder extends Seeder
             DB::table( 'posts' )->insert( array(
                 'content' => $faker->paragraph,
                 'picture' => $faker->imageUrl($width = 640, $height = 480),
-                'user_id' => $faker->randomElement(User::pluck( 'id' )->toArray()), 
+                'profile_id' => $faker->randomElement(Profile::pluck( 'id' )->toArray()), 
             ));
     }
 
