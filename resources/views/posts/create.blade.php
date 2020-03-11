@@ -10,7 +10,7 @@ Create Post Form
 
 @include('partials.errors')
 
-<form method="post" action="{{ route( 'posts.store' ) }}">
+<form method="post" action="{{ route( 'posts.store' ) }}" enctype="multipart/form-data">
     <div class="form-group container h-100">
         <div class="row h-100 justify-content-center align-items-center">
              <div class="col-10 col-md-8 col-lg-6">
@@ -23,7 +23,7 @@ Create Post Form
 
     <label for="picture">
     Select image to upload:
-    <input type="file" name="pictureUpload" id="pictureUpload">
+    <input type="file" name="picture" id="picture">
     </label>
 
     <input class="btn btn-primary btn-customized align-bottom" type="submit" value="Publish Post">

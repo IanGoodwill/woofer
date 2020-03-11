@@ -24,6 +24,8 @@ class PostController extends Controller
             ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' ) // faster to do both queries together
             ->get(); // we want them all because we are looping through them in our index
 
+        
+
 
         return view('posts.index', compact('posts'));
     }
@@ -63,6 +65,7 @@ class PostController extends Controller
         $post = new Post();
         $post->profile_id = $profile->id;
         $post->content = $validatedData['content'];
+        $post->picture = 'picture';
         $post->save();
         
     
