@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+
 use Illuminate\Http\Request;
+use Auth;
+use App\Post;
+use App\Profile;
+use App\User;
+use App\Comment;
 
 class PostController extends Controller
 {
@@ -53,6 +58,7 @@ class PostController extends Controller
            
 
         ));
+        $profile = new Profile();
 
         $post = new Post();
         $post->profile_id = $profile->id;
