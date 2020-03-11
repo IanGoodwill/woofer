@@ -100,6 +100,7 @@ class PostController extends Controller
     {
         if ( $user = Auth::user() ) {
             $post = Post::findOrFail($id);
+            
             return view( 'posts.edit', compact('post') );
         }
         return redirect('/posts');
