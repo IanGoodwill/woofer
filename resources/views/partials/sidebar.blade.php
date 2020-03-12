@@ -5,12 +5,25 @@
     </div>
 @endif
 
-<h2> {{ $profile->username }} </h2>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-<figure>
-    <img class="profilePic" class="img-responsive" src="{{ $profile->picture }}" alt="Profile picture" style="width:10%" />
+
+<div class="float-right" class="mt-5">
+
+<h2> Welcome, {{ $post->username }} </h2>
+
+<figure class="mt-9">
+    <img class="profilePic" class="rounded" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:40%" />
 </figure>
 
-<a class="navbar-brand" href="{{ route( 'profiles.edit') }}"> Edit Profile </a>
+{{-- 
+<a class="navbar-brand" href="{{ route('profiles.edit', $profile->id) }}"> Edit Profile </a>
 
-<a class="navbar-brand" href="{{ route( 'posts.edit') }}"> Edit Posts </a>
+<a class="navbar-brand" href="{{ route('posts.edit', $post->id) }}"> Edit Posts </a>
+--}}
+
+</div> 

@@ -2,7 +2,7 @@
 
 
 @section('title')
-Posts Index
+Profiles Index
 @endsection
 
 @section('content')
@@ -13,25 +13,22 @@ Posts Index
 </div>
 @endif
 
-<p> List of Posts:</p>
-@foreach($posts as $post)
+<p> List of Profiles:</p>
+@foreach($profiles as $profile)
 <div class="card" style="width: 36rem;">
 
 <ul>
         <div class="card-body"> 
             <li>
                 <h3>
-                    {{ $post->username }}
+                    {{ $profile->username }}
                 </h3>
                 <figure>
-                    <img class="profilePic" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:10%" />
+                    <img class="profilePic" class="img-responsive" src="{{ $profile->picture }}" alt="Profile picture" style="width:10%" />
                 </figure>
                 <p>
-                    {{ $post->content }}
+                    {{ $profile->bio}}
                 </p>
-                @auth 
-                <a href="{{ route('posts.edit', $post->id) }}">Edit Post</a>
-                @endauth
         </li>
         </div>       
 </ul>
@@ -40,5 +37,5 @@ Posts Index
 @endsection
 
 @auth 
-@include('partials.sidebar')
+
 @endauth

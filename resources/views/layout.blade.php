@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html>
     <head>
         <meta charset="utf-8">
@@ -11,11 +12,10 @@
 
     <body>
         @include('partials.navigation')
-        
         <h1>
             @yield('title')
         </h1>
-      
+
        
 
         @yield('content')

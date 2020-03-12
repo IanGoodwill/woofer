@@ -22,6 +22,12 @@ class ProfileController extends Controller
         ->join( 'users', 'profiles.user_id', '=', 'users.id' ) // faster to do both queries together
         ->get(); // we want them all because we are looping through them in our index
 
+        $posts = Post::all();
+       
+        $profile = Profile::find($profile_id);
+        $profile->posts()->attach($post_id);
+
+
     
 
 
@@ -63,9 +69,10 @@ class ProfileController extends Controller
 
         $profile = new Profile();
         $profile->user_id = $user->id;
+        $profile->username = $validatedData['username'];
         $profile->bio = $validatedData['bio'];
         $profile->picture = 'picture';
-        $post->save();
+        $profile->save();
         
     
          return redirect('/posts')->with('success', 'Profile saved.');

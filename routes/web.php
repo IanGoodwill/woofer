@@ -19,8 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/posts', 'PostController@index')->name('home');
-
 Route::resource( 'posts', 'PostController' );
 
+Route::resource( 'profiles', 'ProfileController' );
 
+Route::get('partials.sidebar', 'PostController@index');
+
+Route::get('posts/{post}/profiles/{profile}/comments/{comment}', function ($postId, $profileId, $commentId) {
+    //
+});

@@ -9,7 +9,13 @@
         @auth
         <li class="nav-item">
         <a class="navbar-brand" href="{{ route( 'posts.create') }}">
-            Create
+            Create Post
+            </a>
+        </li>
+
+        <li class="nav-item">
+        <a class="navbar-brand" href="{{ route( 'profiles.create') }}">
+            Profile
             </a>
         </li>
         
