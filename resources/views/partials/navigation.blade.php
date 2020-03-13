@@ -35,6 +35,12 @@
             Login
             </a>
         </li>
+
+        <li class="nav-item">
+        <a class="navbar-brand" href="{{ route( 'register') }}">
+            Register
+            </a>
+        </li>
         @endauth
     </ul>
 </nav>

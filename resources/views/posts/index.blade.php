@@ -2,7 +2,7 @@
 
 
 @section('title')
-Posts Index
+Woofer
 @endsection
 
 @section('content')
@@ -32,6 +32,7 @@ Posts Index
                 @auth 
                 <a href="{{ route('posts.edit', $post->id) }}">Edit Post</a>
                 @endauth
+               
         </li>
         </div>       
 </ul>

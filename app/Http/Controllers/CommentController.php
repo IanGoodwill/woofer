@@ -28,7 +28,11 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        if ( $user ) // we are logged in and can create posts
+            return view('comments.create');
+        else // not logged in, can not make posts. redirect to index
+            return redirect('/posts');
     }
 
     /**
@@ -39,7 +43,28 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ( $user = Auth::user() ) //only store data if user is logged in. 
+        {
+
+        $validatedData = $request->validate(array( 
+            'content' => 'required|max:255',
+           
+
+        ));
+        $profile = new Profile();
+
+        $post = new Post();
+
+        $comment = new Comment();
+        $comment->post_id = $post->id;
+        $post->content = $validatedData['content'];
+        
+        $post->save();
+        
+    
+         return redirect('/posts')->with('success', 'Comment saved.');
+        }// redirect by default
+         return redirect('/posts');
     }
 
     /**
@@ -50,7 +75,11 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        $commentProfile = $comment->profile()->get()[0];
+
+        return view( 'comments.show', compact('comment'), compact('commentProfile') );
     }
 
     /**
@@ -61,7 +90,12 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        if ( $user = Auth::user() ) {
+            $comment = Comment::findOrFail($id);
+
+            return view( 'comments.edit', compact('comment') );
+        }
+        return redirect('/posts');
     }
 
     /**
@@ -73,7 +107,15 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ( $user = Auth::user() ) {
+            $validatedData = $request->validate(array( 
+                'content' => 'required|max:255',
+             ));
+    
+             Comment::whereId($id)->update($validatedData);
+             return redirect('/posts')->with('success', 'Comment updated.');
+            }
+            return redirect('/posts');
     }
 
     /**
@@ -84,6 +126,13 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ( $user = Auth::user() ) {
+            $comment = Comment::findOrFail($id);
+    
+            $comment->delete();
+    
+            return redirect('/posts')->with('success', 'Comment deleted.');
+        }
+        return redirect('/posts');
     }
 }

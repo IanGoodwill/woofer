@@ -9,8 +9,10 @@ use App\Profile;
 use App\User;
 use App\Comment;
 
+
 class ProfileController extends Controller
 {
+   
     /**
      * Display a listing of the resource.
      *

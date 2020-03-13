@@ -10,8 +10,11 @@ use App\Profile;
 use App\User;
 use App\Comment;
 
-class PostController extends Controller
+
+class PostController extends Controller 
 {
+  
+
     /**
      * Display a listing of the resource.
      *
@@ -20,18 +23,13 @@ class PostController extends Controller
     public function index()
     {
         
+        
         $posts = Post::query( )
             ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' ) // faster to do both queries together
             ->get(); // we want them all because we are looping through them in our index
 
-        $profiles = Profile::all();
-
-        $profile = Profile::query( )
-        ->join( 'posts', 'posts.profile_id', '=', 'profiles.id' ) // faster to do both queries together
-        ->get();
-
-
-        return view('posts.index', compact('posts'));
+    
+        return view('posts.index', compact('posts')  );
     }
 
     /**
