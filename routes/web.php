@@ -23,6 +23,8 @@ Route::resource( 'posts', 'PostController' );
 
 Route::resource( 'profiles', 'ProfileController' );
 
+Route::resource( 'comments', 'CommentController' );
+
 Route::get('partials.sidebar', 'PostController@index');
 
 Route::get('posts/{post}/profiles/{profile}/comments/{comment}', function ($postId, $profileId, $commentId) {

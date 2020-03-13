@@ -17,7 +17,7 @@
 <h2> Welcome, {{ $post->username }} </h2>
 
 <figure class="mt-9">
-    <img class="profilePic" class="rounded" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:40%" />
+    <img class="rounded-circle z-depth-2"  class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:40%" />
 </figure>
 
 {{-- 

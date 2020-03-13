@@ -24,13 +24,14 @@ Woofer
                     {{ $post->username }}
                 </h3>
                 <figure>
-                    <img class="profilePic" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:10%" />
+                    <img class="rounded-circle z-depth-2" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:10%" />
                 </figure>
                 <p>
                     {{ $post->content }}
                 </p>
+                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View Post</a>
                 @auth 
-                <a href="{{ route('posts.edit', $post->id) }}">Edit Post</a>
+                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit Post</a>
                 @endauth
                
         </li>

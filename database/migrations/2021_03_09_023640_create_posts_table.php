@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->longText( 'content' );
             $table->unsignedBigInteger( 'profile_id' )->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign( 'profile_id' )
                 ->references( 'id' )

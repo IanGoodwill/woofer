@@ -19,9 +19,6 @@ View Profile
         {{ $profile->username }}
 
     <p>{{ $profile->bio }}</p>
-   
-       
-   
- 
+
 
 @endsection

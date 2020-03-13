@@ -49,19 +49,15 @@ class CommentController extends Controller
         $validatedData = $request->validate(array( 
             'content' => 'required|max:255',
            
-
         ));
-        $profile = new Profile();
 
-        $post = new Post();
 
-        $comment = new Comment();
-        $comment->post_id = $post->id;
-        $post->content = $validatedData['content'];
-        
-        $post->save();
-        
+        $input = $request->all();
+        $input['profile_id'] = profile()->id;
     
+        Comment::create($input);
+   
+       
          return redirect('/posts')->with('success', 'Comment saved.');
         }// redirect by default
          return redirect('/posts');

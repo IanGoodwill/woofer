@@ -6,20 +6,47 @@ View Post
 
 @section('content')
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center text-success">ItSolutionStuff.com</h3>
 
 <h4> See posts one by one</h4>
 
 @include('partials.errors')
 
+<strong> Name: </strong>
+    {{ $postProfile->username }}
+  
+    <p>{{ $post->content }}</p>
 
-    @csrf {{-- cross site request forgery. a security measure --}}
-    @method('PATCH')
+    <h4>Display Comments</h4>
 
-        <p>{{ $post->content }}</p>
+    @include('posts.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
    
-        <strong> Name: </strong>
-        {{ $postProfile->username }}
-   
- 
+    <h4>Add comment</h4>
 
+    <form method="post" action="{{ route('comments.store'   ) }}">
+
+        @csrf
+        <div class="form-group">
+            <textarea class="form-control" name="content"></textarea>
+            <input type="hidden" name="post_id" value="{{ $post->id }}" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-success" value="Add Comment" />
+        </div>
+
+        </form>
+   
+      
+   
+
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

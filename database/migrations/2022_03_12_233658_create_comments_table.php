@@ -18,7 +18,9 @@ class CreateCommentsTable extends Migration
             $table->longText( 'content' );
             $table->unsignedBigInteger( 'profile_id' )->nullable();
             $table->unsignedBigInteger( 'post_id' )->nullable();
+            $table->integer('parent_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign( 'profile_id' )
                 ->references( 'id' )

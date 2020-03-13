@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Actuallymab\LaravelComment\Contracts\Commentable;
-use Actuallymab\LaravelComment\HasComments;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    use HasComments;
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
     //
     protected $fillable = array(  
         'content',
@@ -22,7 +23,7 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany( 'App\Comment' );
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
 
 
