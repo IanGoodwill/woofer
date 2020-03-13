@@ -86,9 +86,9 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        $postProfile = $post->profile()->get()[0];
+      
 
-        return view( 'posts.show', compact('post'), compact('postProfile') );
+        return view( 'posts.show', compact('post') );
 
     }
 

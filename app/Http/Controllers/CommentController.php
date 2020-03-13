@@ -53,7 +53,7 @@ class CommentController extends Controller
 
 
         $input = $request->all();
-        $input['profile_id'] = profile()->id;
+        $input['user_id'] = auth()->user()->id;
     
         Comment::create($input);
    
