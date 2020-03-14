@@ -6,6 +6,11 @@ View Profile
 
 @section('content')
 
+<br>
+<br>
+<br>
+
+<div class="">
 
 <h4> See single Profile</h4>
 
@@ -20,5 +25,5 @@ View Profile
 
     <p>{{ $profile->bio }}</p>
 
-
+</div>
 @endsection

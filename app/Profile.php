@@ -23,4 +23,8 @@ class Profile extends Model
     {
         return $this->hasMany( 'App\Post' );
     }
+
+    protected $fillable = [
+        'username', 'user_id', 'bio', 'picture'
+    ];
 }

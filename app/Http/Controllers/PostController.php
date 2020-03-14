@@ -22,14 +22,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        
-        
-        $posts = Post::query( )
-            ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' ) // faster to do both queries together
-            ->get(); // we want them all because we are looping through them in our index
+        $profiles = Profile::all();
 
-    
-        return view('posts.index', compact('posts')  );
+        $user = Auth::user();
+
+        $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
+
+        $posts = Post::query( )
+            ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
+            ->get(); 
+
+        return view('posts.index', compact('posts', 'profiles', 'profile',)  );
     }
 
     /**
@@ -145,5 +148,15 @@ class PostController extends Controller
         }
         return redirect('/posts');
     }
+
+    public function showProfile($id)
+    {
+        $profiles = Profile::query( )
+        ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' ) // faster to do both queries together
+        ->get(); // we want them all because we are looping through them in our show
+
+    }
+
+
     }
 

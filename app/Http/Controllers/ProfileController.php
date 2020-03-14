@@ -27,13 +27,9 @@ class ProfileController extends Controller
         $posts = Post::all();
        
         $profile = Profile::find($profile_id);
-        $profile->posts()->attach($post_id);
+       
 
-
-    
-
-
-    return view('profiles.index', compact('profiles'));
+    return view('profiles.index', compact('profiles', 'posts' , 'profile'));
     }
 
     /**
@@ -92,9 +88,9 @@ class ProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
 
-        $userProfile = $profile->user()->get()[0];
+        
 
-        return view( 'profiles.show', compact('profile'), compact('userProfile') );
+        return view ('profiles.show', compact('profile') );
     }
 
     /**
@@ -106,7 +102,9 @@ class ProfileController extends Controller
     public function edit($id)
     {
         if ( $user = Auth::user() ) {
-            $profile = Profile::findOrFail($id);
+
+            $profile = profile::findOrFail($id);
+
 
             return view( 'profiles.edit', compact('profile') );
         }
@@ -151,4 +149,18 @@ class ProfileController extends Controller
         }
         return redirect('/posts');
     }
+
+    public function showPost($id)
+    {
+        $posts = Post::query( )
+        ->join( 'posts', 'posts.profile_id', '=', 'profiles.id' ) // faster to do both queries together
+        ->get(); // we want them all because we are looping through them in our show
+
+    }
+
+    public function getUserByUsername($username)
+    {
+        return User::with('profile')->wherename($username)->firstOrFail();
+    }
+
 }

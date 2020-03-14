@@ -6,7 +6,7 @@ Update Profile Form
 
 @section('content')
 
-<h1 class="text-center"> Fill out this form to create a profile!</h1>
+<h1 class="text-center"> Fill out this form to update your profile!</h1>
 
 @include('partials.errors')
 
