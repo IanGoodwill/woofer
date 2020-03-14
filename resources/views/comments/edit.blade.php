@@ -15,9 +15,11 @@ Edit Comment
     <div class="row h-100 justify-content-center align-items-center">
 
 <form method="post" action="{{ route( 'comments.update', $comment->id) }}">
+
 <div class="form-group container h-100">
 
     @csrf {{-- cross site request forgery. a security mesaure --}}
+    
     @method('PATCH')
 
     <label for="content">

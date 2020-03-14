@@ -6,11 +6,18 @@ View Profile
 
 @section('content')
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center text-success">ItSolutionStuff.com</h3>
+
 <br>
 <br>
 <br>
 
-<div class="">
+
 
 <h4> See single Profile</h4>
 
@@ -23,7 +30,14 @@ View Profile
     <strong> Name: </strong>
         {{ $profile->username }}
 
+        <br>
+
+    <strong> Bio: </strong>
     <p>{{ $profile->bio }}</p>
 
+    </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

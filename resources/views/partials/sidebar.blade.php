@@ -14,7 +14,7 @@
 
 <div class="float-right" class="mt-5">
 
-<h2> Welcome, {{ $post->username }} </h2>
+<h2> Welcome, {{ $profile->username }} </h2>
 
 <figure class="mt-9">
     <img class="rounded-circle z-depth-2"  class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:40%" />

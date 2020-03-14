@@ -17,8 +17,9 @@ View Post
 
 @include('partials.errors')
 
-<strong> Name: </strong>
-    {{ $post->username }}
+<strong> Username: </strong>
+
+    {{ $post->profile->username ?? '' }}
   
     <p>{{ $post->content }}</p>
 

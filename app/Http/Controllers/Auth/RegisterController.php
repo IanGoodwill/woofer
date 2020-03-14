@@ -72,7 +72,7 @@ class RegisterController extends Controller
         ]);
 
         Profile::create([
-            'username' => 'default',
+            'username' => 'Please update your Profile',
             'bio' => 'No bio provided',
             'picture' => 'picture',
             'user_id' => $user->id

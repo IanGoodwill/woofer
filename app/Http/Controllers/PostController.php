@@ -89,7 +89,9 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-      
+        $user = Auth::user();
+
+        $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
 
         return view( 'posts.show', compact('post') );
 
@@ -104,6 +106,7 @@ class PostController extends Controller
     public function edit($id)
     {
         if ( $user = Auth::user() ) {
+            
             $post = Post::findOrFail($id);
 
             return view( 'posts.edit', compact('post') );
