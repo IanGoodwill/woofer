@@ -11,7 +11,7 @@ View Post
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center text-success">ItSolutionStuff.com</h3>
+                   
 
 <h4> See posts one by one</h4>
 

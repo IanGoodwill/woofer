@@ -22,17 +22,23 @@ class PostController extends Controller
      */
     public function index()
     {
-        $profiles = Profile::all();
+      
+        if ( $user = Auth::user() ) 
+        {
+            $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();   
 
-        $user = Auth::user();
-
-        $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
-
-        $posts = Post::query( )
+            $posts = Post::query( )
             ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
             ->get(); 
 
-        return view('posts.index', compact('posts', 'profiles', 'profile',)  );
+        return view('posts.index', compact('posts', 'profile',)  );
+
+        }  else 
+            $posts = Post::query( )
+                ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
+                ->get(); 
+
+            return view('posts.index', compact('posts'));
     }
 
     /**

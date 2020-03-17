@@ -29,9 +29,9 @@ Woofer
                 <p>
                     {{ $post->content }}
                 </p>
-
-                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View Post</a>
                 @auth 
+                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View Post</a>
+                
                 <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit Post</a>
                 @endauth
                
