@@ -19,7 +19,7 @@ Update Profile Form
 
     <label for="username">
         <strong> Username: </strong>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="username" value="{{ $profile->username}}">
     </label>
     </div>
 

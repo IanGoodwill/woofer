@@ -29,7 +29,11 @@ class PostController extends Controller
 
             $posts = Post::query( )
             ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
+            ->select( 'posts.id', 'profiles.id as profile_ID', 'profiles.username', 'posts.content', 'posts.picture')
+            ->orderBy('posts.id', 'desc')
             ->get(); 
+            
+            $post = Post::where("profile_id", "=", $profile->id)->first();   
 
         return view('posts.index', compact('posts', 'profile',)  );
 
@@ -38,7 +42,7 @@ class PostController extends Controller
                 ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
                 ->get(); 
 
-            return view('posts.index', compact('posts'));
+            return view('posts.index', compact('posts', 'post'));
     }
 
     /**
@@ -71,7 +75,7 @@ class PostController extends Controller
            
 
         ));
-        $profile = new Profile();
+        $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
 
         $post = new Post();
         $post->profile_id = $profile->id;
@@ -95,11 +99,11 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        $user = Auth::user();
+        $profile = Profile::findOrFail($post->profile_id);
 
-        $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
+        return view( 'posts.show', compact('post', 'profile') );
 
-        return view( 'posts.show', compact('post') );
+        
 
     }
 
@@ -135,6 +139,7 @@ class PostController extends Controller
              ));
     
              Post::whereId($id)->update($validatedData);
+
              return redirect('/posts')->with('success', 'Post updated.');
             }
             return redirect('/posts');

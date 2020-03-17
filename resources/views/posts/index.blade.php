@@ -17,27 +17,28 @@ Woofer
 @foreach($posts as $post)
 <div class="card" style="width: 36rem;">
 
-<ul>
+    <ul>
         <div class="card-body"> 
             <li> 
-            <a href="{{ route('profiles.show', $post->profile_id) }}" class="text-dark" class="nav-link" >{{ $post->username }}</a>
+                <a href="{{ route('profiles.show', $post->profile_ID) }}" class="text-dark" class="nav-link" >{{ $post->username }}</a>
                
                 <figure>
                     <img class="rounded-circle z-depth-2" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:10%" />
                 </figure>
 
                 <p>
-                    {{ $post->content }}
+                    {{ $post->content }}    
                 </p>
+
                 @auth 
-                <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">View Post</a>
+                <a href="{{ route('posts.show', $post->id ) }}" class="btn btn-primary">View Post</a>
                 
-                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit Post</a>
+                <a href="{{ route('posts.edit', $post->id ) }}" class="btn btn-primary">Edit Post</a>
                 @endauth
                
-        </li>
+            </li>
         </div>       
-</ul>
+    </ul>
 </div>
 @endforeach
 @endsection

@@ -12,40 +12,40 @@ View Post
             <div class="card">
                 <div class="card-body">
                    
+                    <h4> See posts one by one</h4>
+                    @include('partials.errors')
 
-<h4> See posts one by one</h4>
+                    <strong> Username: </strong>
+                    <br>
 
-@include('partials.errors')
+                    {{ $profile->username ?? '' }}
+                    <br>
 
-<strong> Username: </strong>
+                    <strong> Content: </strong>
+                    <br>
 
-    {{ $post->profile->username ?? '' }}
-  
-    <p>{{ $post->content }}</p>
+                    <p>{{ $post->content }}</p>
 
-    <h4>Display Comments</h4>
+                    <h4>Display Comments</h4>
 
-    @include('posts.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
-   
-    <h4>Add comment</h4>
+                    @include('posts.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
+                    
+                    <h4>Add comment</h4>
 
-    <form method="post" action="{{ route('comments.store'   ) }}">
+                    <form method="post" action="{{ route('comments.store'   ) }}">
 
-        @csrf
-        <div class="form-group">
-            <textarea class="form-control" name="content"></textarea>
-            <input type="hidden" name="post_id" value="{{ $post->id }}" />
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-success" value="Add Comment" />
-        </div>
+                        @csrf
+                        <div class="form-group">
+                            <textarea class="form-control" name="content"></textarea>
+                            <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success" value="Add Comment" />
+                        </div>
 
-        </form>
-   
-      
-   
+                        </form>
 
-        </div>
+                </div>
             </div>
         </div>
     </div>

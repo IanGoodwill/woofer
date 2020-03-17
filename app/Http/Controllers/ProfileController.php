@@ -63,9 +63,10 @@ class ProfileController extends Controller
            
 
         ));
-        $user = new User();
+        $user = Auth::user();
 
-        $profile = new Profile();
+        $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
+
         $profile->user_id = $user->id;
         $profile->username = $validatedData['username'];
         $profile->bio = $validatedData['bio'];
@@ -88,9 +89,11 @@ class ProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
 
-        
+        $post = Post::findOrFail($id);
 
-        return view ('profiles.show', compact('profile') );
+        $posts = Post::where('profile_id', "=", $id)->latest()->get(); 
+
+        return view ('profiles.show', compact('profile', 'post', 'posts') );
     }
 
     /**
