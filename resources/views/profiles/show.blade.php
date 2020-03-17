@@ -35,6 +35,16 @@ View Profile
     <strong> Bio: </strong>
     <p>{{ $profile->bio }}</p>
 
+    <strong> Recent Posts: </strong>
+    @foreach($posts as $post)
+
+  
+        <strong>{{ $post->username }}</strong>
+        <p>{{ $post->content }}</p>
+   
+            
+    @endforeach
+
     </div>
             </div>
         </div>
