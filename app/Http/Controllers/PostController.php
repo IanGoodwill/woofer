@@ -42,7 +42,7 @@ class PostController extends Controller
                 ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
                 ->get(); 
 
-            return view('posts.index', compact('posts', 'post'));
+            return view('posts.index', compact('posts'));
     }
 
     /**

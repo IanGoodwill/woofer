@@ -16,10 +16,10 @@
             </div>
         </form>
 
-        <div class="form-group">
-            <a href="{{ route('comments.edit', $post->id) }}" class="btn btn-primary">Edit Comment</a>
-        </div>
-
+            <div class="form-group">
+                <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-primary">Edit Comment</a>
+            </div>
+       
         <div class="form-group">
         <form action="{{ route('comments.destroy', $comment->id) }}" method="post">
             @csrf 

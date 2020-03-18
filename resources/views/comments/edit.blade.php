@@ -32,13 +32,14 @@ Edit Comment
     <div class="form-group container h-100">
     <input class="btn btn-primary btn-customized align-bottom" type="submit" value="Update Comment">
     </div>
+    </form> 
 
     <div class="form-group container h-100">
         <form action="{{ route('comments.destroy', $comment->id) }}" method="post">
                         @csrf 
                         @method('DELETE')
                         <input class="btn btn-danger" type="submit" value="Delete Comment">
-        </form>  
+         
     </div>
 
 </form>

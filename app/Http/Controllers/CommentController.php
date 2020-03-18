@@ -73,9 +73,8 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
 
-        $commentProfile = $comment->profile()->get()[0];
 
-        return view( 'comments.show', compact('comment'), compact('commentProfile') );
+        return view( 'comments.show', compact('comment') );
     }
 
     /**
@@ -87,6 +86,7 @@ class CommentController extends Controller
     public function edit($id)
     {
         if ( $user = Auth::user() ) {
+
             $comment = Comment::findOrFail($id);
 
             return view( 'comments.edit', compact('comment') );
