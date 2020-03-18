@@ -26,6 +26,13 @@
 <br>
 
 <a href="{{ route('profiles.show', $profile->id) }}" class="navbar-brand" class="nav-link" class="text-center" >View Profile</a>
+<<<<<<< HEAD
+=======
+
+<br>
+
+<a class="navbar-brand" class="text-center" href="{{ route('posts.edit', $post->id) }}"> Edit Posts </a>
+>>>>>>> 7fbe887bbf4f0f6e646e6c63eb2836d6aa457274
 
 <br>
 <!--
