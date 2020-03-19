@@ -19,11 +19,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('profile/{profileId}/follow', 'FollowerController@followProfile')->name('profile.follow');
+
+Route::post('/{profileId}/unfollow', 'FollowerController@unFollowProfile')->name('profile.unfollow');
+
 Route::get('profile/{id}', 'ProfileController@showPost');
 
 Route::get('post/{id}', 'PostController@showProfile');
 
 Route::get('posts/{post}/profiles/{profile}/comments/{comment}', function ($postId, $profileId, $commentId) {} ); 
+
 
 Route::resource( 'posts', 'PostController' );
 

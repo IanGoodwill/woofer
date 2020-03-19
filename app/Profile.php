@@ -24,6 +24,16 @@ class Profile extends Model
         return $this->hasMany( 'App\Post' );
     }
 
+    public function followers()
+    {
+        return $this->hasMany( 'App\Follower' )->withTimestamps();
+    }
+
+    public function followings()
+    {
+        return $this->hasMany( 'App\Follower' )->withTimestamps();
+    }
+
     protected $fillable = [
         'username', 'user_id', 'bio', 'picture'
     ];

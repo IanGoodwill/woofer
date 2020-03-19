@@ -32,6 +32,10 @@ View Profile
 
         <br>
 
+        <a href="{{ route('profile.follow', $profile->id ) }}">Follow Profile</a>
+
+        <br>
+
     <strong> Bio: </strong>
     <p>{{ $profile->bio }}</p>
 

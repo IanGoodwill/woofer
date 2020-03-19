@@ -8,6 +8,7 @@ use App\Post;
 use App\Profile;
 use App\User;
 use App\Comment;
+use App\Follower;
 
 
 class ProfileController extends Controller
@@ -166,4 +167,27 @@ class ProfileController extends Controller
         return User::with('profile')->wherename($username)->firstOrFail();
     }
 
+    
+    public function followProfile($id)
+    {
+        $follow = New Follower;
+        $follow->profile_id = profile()->id;
+        $follow->follower_id = $id;
+        $follow->followed = 1;
+        $follow->save();
+
+        return redirect()->back();
+
+    }
+
+    public function UnfollowProfile($id)
+    {
+        $follow = Follower::where('profile_id', profile()->id)
+                    ->where('follower_id', $id)
+                    ->delete();
+
+                    return redirect()->back();
+    }
+
 }
+

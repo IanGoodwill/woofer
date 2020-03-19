@@ -34,8 +34,6 @@
 
 
 <br>
-<!--
-<a class="navbar-brand" class="text-center" href="{{ route('posts.edit', $post->id) }}"> Edit Posts </a>
--->
+
 
 </div> 
