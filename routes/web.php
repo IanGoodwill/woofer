@@ -27,6 +27,10 @@ Route::get('profile/{id}', 'ProfileController@showPost');
 
 Route::get('post/{id}', 'PostController@showProfile');
 
+Route::get('comment/like/{id}', ['as' => 'comment.like', 'uses' => 'LikeController@likeComment']);
+
+Route::get('post/like/{id}', ['as' => 'post.like', 'uses' => 'LikeController@likePost']);
+
 Route::get('posts/{post}/profiles/{profile}/comments/{comment}', function ($postId, $profileId, $commentId) {} ); 
 
 Route::resource( 'posts', 'PostController' );

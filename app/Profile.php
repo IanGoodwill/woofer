@@ -34,6 +34,11 @@ class Profile extends Model
         return $this->hasMany( 'App\Follower' )->withTimestamps();
     }
 
+    public function likedPosts()
+{
+    return $this->morphedByMany('App\Post', 'likeable')->whereDeletedAt(null);
+}
+
     protected $fillable = [
         'username', 'user_id', 'bio', 'picture'
     ];
