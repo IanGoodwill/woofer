@@ -16,7 +16,7 @@
             @yield('title')
         </h1>
 
-       
+        @yield('js')
 
         @yield('content')
         @include('partials.footer')

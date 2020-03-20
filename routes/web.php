@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/posts/{id}/act', 'LikeController@actOnPost');
+
 Route::get('profile/{profileId}/follow', 'FollowerController@followProfile')->name('profile.follow');
 
 Route::get('/{profileId}/unfollow', 'FollowerController@unFollowProfile')->name('profile.unfollow');
