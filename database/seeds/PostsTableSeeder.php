@@ -21,6 +21,9 @@ class PostsTableSeeder extends Seeder
                 'content' => $faker->paragraph,
                 'picture' => $faker->imageUrl($width = 640, $height = 480),
                 'profile_id' => $faker->randomElement(Profile::pluck( 'id' )->toArray()), 
+                'likes_count' => $faker->randomDigitNotNull,
+                'posted_at' => $faker->dateTimeThisYear(),
+                
             ));
     }
 

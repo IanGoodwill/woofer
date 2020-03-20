@@ -9,11 +9,16 @@ class Post extends Model
 {
     use SoftDeletes;
 
+    public $timestamps = false;
+
+    protected $guarded = [];
+
     protected $dates = ['deleted_at'];
     //
     protected $fillable = array(  
         'content',
         'picture',
+        'likes_count'
     );
 
     public function profiles()

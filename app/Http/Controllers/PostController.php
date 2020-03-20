@@ -29,7 +29,7 @@ class PostController extends Controller
 
             $posts = Post::query( )
             ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
-            ->select( 'posts.id', 'profiles.id as profile_ID', 'profiles.username', 'posts.content', 'posts.picture')
+            ->select( 'posts.id', 'profiles.id as profile_ID', 'profiles.username', 'posts.content', 'posts.picture', 'posts.likes_count', 'posts.posted_at')
             ->orderBy('posts.id', 'desc')
             ->get(); 
             

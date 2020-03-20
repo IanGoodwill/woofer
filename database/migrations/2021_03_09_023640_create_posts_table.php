@@ -18,7 +18,8 @@ class CreatePostsTable extends Migration
             $table->string( 'picture' )->nullable();
             $table->longText( 'content' );
             $table->unsignedBigInteger( 'profile_id' )->nullable();
-            $table->timestamps();
+            $table->timestamp('posted_at');
+            $table->integer('likes_count')->default(0);
             $table->softDeletes();
 
             $table->foreign( 'profile_id' )
