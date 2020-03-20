@@ -20,17 +20,33 @@ class FollowerController extends Controller
             $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
 
             $follower = New Follower;
-            $follower->profile_id = $profile->id;
-            $follower->follower_id = $id;
+            $follower->profile_id = $id;
+            $follower->follower_id = $profile->id;
             $follower->followed = 1;
             $follower->save();
 
-            return redirect('/posts')->with('success', 'Followers updated.');
+            return redirect('/posts')->with('success', 'Started following Profile.');
         }
         if(! $user) {
     
             return redirect('/posts');
         }
+    }
+
+    public function UnfollowProfile($id)
+    {
+        if ( $user = Auth::user() ) 
+        {
+
+        $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
+
+        $follower = Follower::where( 'profile_id', '=', $id )
+                    ->where('follower_id', $profile->id)
+                    ->delete();
+
+    
+                    return redirect('/posts')->with('success', 'Stopped following Profile.');
+        }           
     }
 
 }
