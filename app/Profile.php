@@ -36,7 +36,7 @@ class Profile extends Model
 
     public function likedPosts()
 {
-    return $this->morphedByMany('App\Post', 'likeable')->whereDeletedAt(null);
+    return $this->morphedByMany('App\Post', 'likes')->whereDeletedAt(null);
 }
 
     protected $fillable = [

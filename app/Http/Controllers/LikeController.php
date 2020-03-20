@@ -25,11 +25,11 @@ class LikeController extends Controller
 
     public function handleLike($type, $id)
     {
-        $existing_like = Like::withTrashed()->whereLikeableType($type)->whereLikeableId($id)->where("profile_id", "=", $profile->id)->firstOrFail();
+        $existing_like = Like::withTrashed()->whereLikeableType($type)->whereLikesId($id)->where("profile_id", "=", $profile->id)->firstOrFail();
         if (is_null($existing_like)) {
             Like::create([
                 'user_id'       => Auth::id(),
-                'likeable_id'   => $id,
+                'likes_id'   => $id,
                 'likeable_type' => $type,
             ]);
         } else {

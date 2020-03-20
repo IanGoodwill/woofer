@@ -34,6 +34,10 @@ Woofer
                 <a href="{{ route('posts.show', $post->id ) }}" class="btn btn-primary">View Post</a>
                 
                 <a href="{{ route('posts.edit', $post->id ) }}" class="btn btn-primary">Edit Post</a>
+                <br>
+                <a href="#" class="like">Like</a>
+                <br>
+                <a href="#" class="like">Dislike</a>
                 @endauth
                
             </li>

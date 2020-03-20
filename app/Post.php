@@ -28,13 +28,7 @@ class Post extends Model
 
     public function likes()
     {
-        return $this->morphToMany('App\Profile', 'likeable')->whereDeletedAt(null);
-    }
-
-    public function getIsLikedAttribute()
-    {
-        $like = $this->likes()->where("profile_id", "=", $profile->id)->firstOrFail();
-        return (!is_null($like)) ? true : false;
+        return $this->hasMany('App\Like');
     }
 
 }
