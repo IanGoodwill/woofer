@@ -62,9 +62,25 @@ Woofer
     <ul>
         <div class="card-body"> 
             <li> 
-            @auth
-                <a href="{{ route('profiles.show', $post->profile_ID) }}" class="text-dark" class="nav-link" >{{ $post->username }}</a>
-           @endauth     
+                @auth
+                <a href="{{ route('profiles.show', $post->profile_ID) }}" class="text-dark" class="nav-link" ><strong>{{ $post->username }}</strong></a>
+                @endauth
+
+                @guest
+                <strong>{{ $post->username }}</strong>
+                @endguest
+
+
+                <div class="float-right">
+                    @if($follower ?? '') 
+                    <small>You are following this profile</small>
+
+                    @else 
+                    <small>You are not following this profile</small>
+
+                    @endif
+                </div>
+
                
                 <figure>
                     <img class="rounded-circle z-depth-2" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:10%" />
@@ -86,7 +102,7 @@ Woofer
             
                 @endauth
                
-            </li>
+            </li> 
         </div>       
     </ul>
 </div>

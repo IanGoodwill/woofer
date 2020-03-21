@@ -25,6 +25,8 @@ class FollowerController extends Controller
             $follower->followed = 1;
             $follower->save();
 
+            $following = Follower::where('followed', '==', 1);
+
             return redirect('/posts')->with('success', 'Started following Profile.');
         }
         if(! $user) {
@@ -47,6 +49,14 @@ class FollowerController extends Controller
     
                     return redirect('/posts')->with('success', 'Stopped following Profile.');
         }           
+    }
+
+    public function Following($id)
+    {
+        if ( $user = Auth::user() ) 
+        {
+            $following = Follower::where('followed', '=', 1);
+        }
     }
 
 }

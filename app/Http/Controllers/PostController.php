@@ -9,6 +9,7 @@ use App\Post;
 use App\Profile;
 use App\User;
 use App\Comment;
+use App\Follower;
 
 
 class PostController extends Controller 
@@ -27,6 +28,8 @@ class PostController extends Controller
         {
             $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();   
 
+            $follower = Follower::where("profile_id", "=", $profile->id)->find('followed');
+
             $posts = Post::query( )
             ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
             ->select( 'posts.id',
@@ -44,7 +47,7 @@ class PostController extends Controller
             
             $post = Post::where("profile_id", "=", $profile->id)->first();   
 
-        return view('posts.index', compact('posts', 'profile',)  );
+        return view('posts.index', compact('posts', 'profile', 'follower')  );
 
         }  else 
             $posts = Post::query( )
