@@ -62,8 +62,9 @@ Woofer
     <ul>
         <div class="card-body"> 
             <li> 
+            @auth
                 <a href="{{ route('profiles.show', $post->profile_ID) }}" class="text-dark" class="nav-link" >{{ $post->username }}</a>
-                
+           @endauth     
                
                 <figure>
                     <img class="rounded-circle z-depth-2" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:10%" />

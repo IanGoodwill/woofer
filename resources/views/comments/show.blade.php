@@ -11,14 +11,10 @@ View Comments
 
 @include('partials.errors')
 
-    <strong> Username: </strong>
+<strong> Username: </strong>
     
-    <h5> {{ $profile->username }} </h5>
+<h5> {{ $profile->username }} </h5>
 
-    <p>{{ $post->content }}</p>
+<p>{{ $post->content }}</p>
    
-      
-   
- 
-
 @endsection

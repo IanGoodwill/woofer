@@ -17,7 +17,7 @@ Profiles Index
 @foreach($profiles as $profile)
 <div class="card" style="width: 36rem;">
 
-<ul>
+    <ul>    
         <div class="card-body"> 
             <li>
                 <h3>
@@ -29,9 +29,9 @@ Profiles Index
                 <p>
                     {{ $profile->bio}}
                 </p>
-        </li>
+            </li>
         </div>       
-</ul>
+    </ul>
 </div>
 @endforeach
 @endsection
