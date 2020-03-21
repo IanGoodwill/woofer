@@ -88,11 +88,26 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $profile = Profile::findOrFail($id);
+        $user = Auth::user();
+
+        $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
 
         $post = Post::findOrFail($id);
 
-        $posts = Post::where('profile_id', "=", $id)->latest()->get(); 
+        $posts = Post::query( )
+            ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
+            ->select( 'posts.id',
+            'profiles.id as profile_ID',
+            'profiles.username',
+            'profiles.bio',
+            'profiles.picture as profile_picture',
+            'posts.posted_at',
+            'posts.posted_at',
+            'posts.content',
+            'posts.picture',
+            'posts.likes_count',  )
+            ->orderBy('posts.id', 'desc')
+            ->get(); 
 
         return view ('profiles.show', compact('profile', 'post', 'posts') );
     }

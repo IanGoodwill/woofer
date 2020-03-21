@@ -16,16 +16,10 @@
         @auth
         <li class="nav-item">
         <a class="navbar-brand" href="{{ route( 'posts.create') }}">
-            Create Post
+            Create New Post
             </a>
         </li>
-
-        <li class="nav-item">
-        <a class="navbar-brand" href="{{ route( 'profiles.create') }}">
-            Profile
-            </a>
-        </li>
-        
+ 
         <li class="nav-item">
         <a class="navbar-brand" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout

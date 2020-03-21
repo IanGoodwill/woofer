@@ -18,7 +18,8 @@ class Post extends Model
     protected $fillable = array(  
         'content',
         'picture',
-        'likes_count'
+        'likes_count',
+        'posted_at'
     );
 
     public function profiles()

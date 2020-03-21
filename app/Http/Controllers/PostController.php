@@ -29,7 +29,16 @@ class PostController extends Controller
 
             $posts = Post::query( )
             ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
-            ->select( 'posts.id', 'profiles.id as profile_ID', 'profiles.username', 'posts.content', 'posts.picture', 'posts.likes_count', 'posts.posted_at')
+            ->select( 'posts.id',
+            'profiles.id as profile_ID',
+            'profiles.username',
+            'profiles.bio',
+            'profiles.picture',
+            'posts.posted_at',
+            'posts.posted_at',
+            'posts.content',
+            'posts.picture',
+            'posts.likes_count',  )
             ->orderBy('posts.id', 'desc')
             ->get(); 
             
@@ -73,7 +82,6 @@ class PostController extends Controller
         $validatedData = $request->validate(array( 
             'content' => 'required|max:255',
            
-
         ));
         $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
 
@@ -168,7 +176,6 @@ class PostController extends Controller
         ->get(); // we want them all because we are looping through them in our show
 
     }
-
 
     }
 

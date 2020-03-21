@@ -11,49 +11,45 @@ View Profile
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center text-success">ItSolutionStuff.com</h3>
+                   
 
-<br>
-<br>
-<br>
+                    <br>
+                    <br>
+                    <br>
 
+                    <h4> See single Profile</h4>
 
+                    @include('partials.errors')
 
-<h4> See single Profile</h4>
+                    <figure>
+                        <img class="profilePic" class="rounded" class="img-responsive" src="{{ $profile->profile_picture }}" alt="Profile picture" style="width:40%" />
+                    </figure>
 
-@include('partials.errors')
+                    <strong> Username: </strong>
+                    {{ $profile->username }}
 
-<figure>
-    <img class="profilePic" class="rounded" class="img-responsive" src="{{ $profile->picture }}" alt="Profile picture" style="width:40%" />
-</figure>
+                    <br>
 
-    <strong> Name: </strong>
-        {{ $profile->username }}
+                    <a href="{{ route('profile.follow', $profile->id ) }}">Follow Profile</a>
 
-        <br>
+                    <br>
 
-        <a href="{{ route('profile.follow', $profile->id ) }}">Follow Profile</a>
+                    <a href="{{ route('profile.unfollow', $profile->id ) }}">Unfollow Profile</a>
 
-        <br>
+                    <br>
 
-        <a href="{{ route('profile.unfollow', $profile->id ) }}">Unfollow Profile</a>
+                    <strong> Bio: </strong>
+                    <p>{{ $profile->bio }}</p>
 
-        <br>
+                    <strong> Recent Posts: </strong>
+                    @foreach($posts as $post)
 
-    <strong> Bio: </strong>
-    <p>{{ $profile->bio }}</p>
-
-    <strong> Recent Posts: </strong>
-    @foreach($posts as $post)
-
-  
-        <strong>{{ $post->username }}</strong>
-        <p>{{ $post->content }}</p>
+                    <p>{{ $post->content }}</p>
    
             
-    @endforeach
+                    @endforeach
 
-    </div>
+                </div>
             </div>
         </div>
     </div>

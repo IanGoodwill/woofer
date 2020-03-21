@@ -45,6 +45,13 @@ Woofer
                 { action: action });
         };
 
+        Echo.channel('post-events')
+        .listen('PostAction', function (event) {
+            console.log(event);
+            var action = event.action;
+            updatePostStats[action](event.postId);
+        })
+
     </script>
     @endsection
 

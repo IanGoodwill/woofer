@@ -9,6 +9,8 @@ class Profile extends Model
 {
     use CanComment;
 
+    public $timestamps = false;
+
     public function users()
     {
         return $this->belongsTo( 'App\User' );

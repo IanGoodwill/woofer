@@ -26,10 +26,6 @@ View Post
 
                     <p>{{ $post->content }}</p>
 
-                    <a href="#" class="like">Like</a>
-                    <br>
-                    <a href="#" class="like">Dislike</a>
-
                     <h4>Display Comments</h4>
 
                     @include('posts.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
