@@ -88,9 +88,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
-
-        $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();
+        $profile = Profile::findOrFail($id);
 
         $post = Post::findOrFail($id);
 
@@ -100,7 +98,7 @@ class ProfileController extends Controller
             'profiles.id as profile_ID',
             'profiles.username',
             'profiles.bio',
-            'profiles.picture as profile_picture',
+            'profiles.picture',
             'posts.posted_at',
             'posts.posted_at',
             'posts.content',

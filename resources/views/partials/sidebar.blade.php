@@ -27,13 +27,6 @@
 
 <a href="{{ route('profiles.show', $profile->id) }}" class="navbar-brand" class="nav-link" class="text-center" >View Profile</a>
 
-
 <br>
-
-<a class="navbar-brand" class="text-center" href="{{ route('posts.edit', $post->id) }}"> Edit Posts </a>
-
-
-<br>
-
 
 </div> 

@@ -19,10 +19,17 @@ View Profile
 
                     <h4> See single Profile</h4>
 
+                    
+                    <a class="float-right" href="{{ route('profile.follow', $profile->id ) }}">Follow Profile</a>
+
+                    <br>
+
+                    <a class="float-right" href="{{ route('profile.unfollow', $profile->id ) }}">Unfollow Profile</a>
+
                     @include('partials.errors')
 
                     <figure>
-                        <img class="profilePic" class="rounded" class="img-responsive" src="{{ $profile->profile_picture }}" alt="Profile picture" style="width:40%" />
+                        <img class="profilePic" class="rounded" class="img-responsive" src="{{ $profile->picture }}" alt="Profile picture" style="width:40%" />
                     </figure>
 
                     <strong> Username: </strong>
@@ -30,24 +37,9 @@ View Profile
 
                     <br>
 
-                    <a href="{{ route('profile.follow', $profile->id ) }}">Follow Profile</a>
-
-                    <br>
-
-                    <a href="{{ route('profile.unfollow', $profile->id ) }}">Unfollow Profile</a>
-
-                    <br>
-
                     <strong> Bio: </strong>
                     <p>{{ $profile->bio }}</p>
 
-                    <strong> Recent Posts: </strong>
-                    @foreach($posts as $post)
-
-                    <p>{{ $post->content }}</p>
-   
-            
-                    @endforeach
 
                 </div>
             </div>
