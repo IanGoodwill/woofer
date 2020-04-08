@@ -25,8 +25,6 @@ class FollowerController extends Controller
             $follower->followed = 1;
             $follower->save();
 
-            $following = Follower::where('followed', '==', 1);
-
             return redirect('/posts')->with('success', 'Started following Profile.');
         }
         if(! $user) {

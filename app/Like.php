@@ -21,7 +21,7 @@ class Like extends Model
     
     public function posts()
     {
-        return $this->belongsTo('App\Like');
+        return $this->morphedByMany('App\Post', 'likes');
     }
 
     public function comments()
