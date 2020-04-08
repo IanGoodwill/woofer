@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0214797bf91dd877bab8bf6fba560e89",
+    "content-hash": "f75ddea2a40a2ca7b4175a5888ff29a3",
     "packages": [
         {
             "name": "actuallymab/laravel-comment",
@@ -117,6 +117,7 @@
             "time": "2019-12-24T22:41:47+00:00"
         },
         {
+           
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
             "source": {

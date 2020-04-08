@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::post('/posts/{id}/act', 'LikeController@actOnPost');
 
+Route::get('post/like/{id}', ['as' => 'post.like', 'uses' => 'LikeController@likePost']);
+
+Route::get('/posts/{id}/act', ['as' => 'comment.like', 'uses' => 'LikeController@likeComment']);
+
 Route::get('profile/{profileId}/follow', 'FollowerController@followProfile')->name('profile.follow');
 
 Route::get('/{profileId}/unfollow', 'FollowerController@unFollowProfile')->name('profile.unfollow');

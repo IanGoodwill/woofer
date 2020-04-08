@@ -4,7 +4,7 @@
 
         <li class="nav-item" class="mx-auto">
             <figure  >
-                <img class=".img-responsive" hspace="20" alt="logo" src="{{URL('/images/dogTinyWhite.png')}}">
+                <img class="img-responsive" hspace="20" alt="logo" src="{{URL('/images/dogTinyWhite.png')}}">
             </figure>
         </li>
 
