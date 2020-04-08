@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model
+
+class Post extends Model 
 {
     use SoftDeletes;
 
@@ -34,7 +35,13 @@ class Post extends Model
 
     public function likes()
     {
-        return $this->hasMany('App\Like');
+        return $this->morphToMany('App\User', 'likes')->whereDeletedAt(null);
+    }
+
+    public function getIsLikedAttribute()
+    {
+        $like = $this->likes()->whereProfileId(Profile::id())->first();
+        return (!is_null($like)) ? true : false;
     }
 
 }

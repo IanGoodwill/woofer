@@ -26,9 +26,9 @@ class PostController extends Controller
       
         if ( $user = Auth::user() ) 
         {
-            $profile = Profile::where("user_id", "=", $user->id)->firstOrFail();   
-
-            $follower = Follower::where("profile_id", "=", $profile->id)->find('followed');
+            $profile = Profile::where("user_id", "=", $user->id)->firstOrFail(); 
+          
+            $follower = Follower::where("follower_id", "=", $profile->id)->find('followed');
 
             $posts = Post::query( )
             ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )

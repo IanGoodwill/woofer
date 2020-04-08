@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Actuallymab\LaravelComment\CanComment;
 
-class Profile extends Model
+class Profile extends Model 
 {
     use CanComment;
 
@@ -37,9 +37,9 @@ class Profile extends Model
     }
 
     public function likedPosts()
-{
-    return $this->morphedByMany('App\Post', 'likes')->whereDeletedAt(null);
-}
+    {
+        return $this->morphedByMany('App\Post', 'likeable')->whereDeletedAt(null);
+    }
 
     protected $fillable = [
         'username', 'user_id', 'bio', 'picture'

@@ -72,7 +72,7 @@ Woofer
 
 
                 <div class="float-right">
-                    @if($follower ?? '') 
+                    @if($follower->followed ?? '') 
                     <small>You are following this profile</small>
 
                     @else 
@@ -81,7 +81,6 @@ Woofer
                     @endif
                 </div>
 
-               
                 <figure>
                     <img class="rounded-circle z-depth-2" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:10%" />
                 </figure>
