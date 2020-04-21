@@ -13,12 +13,12 @@ Woofer
 </div>
 @endif
 
+<post-grid-view> </post-grid-view>
+<example-component></example-component>
 
-  
-  
 
 @foreach($posts as $post)
-<div class="card" style="width: 36rem;">
+<div class="card" class="gridCard m-b-md" style="width: 36rem;">
 
     <ul>
         <div class="card-body"> 
@@ -42,9 +42,11 @@ Woofer
                     @endif
                 </div>
 
+                <!--
                 <figure>
                     <img class="rounded-circle z-depth-2" class="img-responsive" src="{{ $post->picture }}" alt="Profile picture" style="width:10%" />
                 </figure>
+                -->
 
                 <p>
                     {{ $post->content }}    

@@ -50,10 +50,9 @@ class PostController extends Controller
         return view('posts.index', compact('posts', 'profile', 'follower')  );
 
         }  else 
-            $posts = Post::query( )
-                ->join( 'profiles', 'posts.profile_id', '=', 'profiles.id' )
-                ->get(); 
 
+            $posts = Post::all();
+           
             return view('posts.index', compact('posts'));
     }
 
