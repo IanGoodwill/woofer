@@ -13,9 +13,11 @@ Woofer
 </div>
 @endif
 
+<div id="app">
 <post-grid-view> </post-grid-view>
-<example-component></example-component>
 
+<example-component></example-component>
+</div>
 
 @foreach($posts as $post)
 <div class="card" class="gridCard m-b-md" style="width: 36rem;">
