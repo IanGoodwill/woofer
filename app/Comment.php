@@ -11,7 +11,7 @@ class Comment extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['profile_id', 'post_id', 'parent_id', 'content'];
+    protected $fillable = ['profile_id', 'post_id', 'parent_id', 'content', 'is_gif'];
 
     public function profiles()
     {

@@ -1,41 +1,69 @@
 <template>
+  <form :action="submissionUrl" method="POST">
+    <slot></slot>
 
-    <form :action="submissionUrl" method="POST">
-       <slot> </slot>
+    <div v-if="isGif" class="row">
+      <div class="col-md-12">
+        <img :src="content" />
+        <button type="button" class="btn" @click="resetMessage">Reset</button>
+        <input type="hidden" name="post_id" :value="postId" />
+        <input type="hidden" name="parent_id" :value="commentId" />
+        <input type="hidden" name="content" v-model="content" />
+        <input type="hidden" name="is_gif" :value="isGif" />
+      </div>
+    </div>
 
+    <div v-else class="row">
+      <div class="col-md-12">
         <div class="form-group">
-            <input type="text" name="content" v-model="content" class="form-control" />
-            <input type="hidden" name="post_id" :value="postId" />
-            <input type="hidden" name="parent_id" :value="commentId" />
+          <strong>Content</strong>
+          <input type="text" name="content" v-model="content" class="form-control" />
         </div>
-        
-        <div class="form-group">
-            <input type="submit" class="btn btn-warning" value="Reply" />
-        </div>
-    </form>
- 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <input type="submit" class="btn btn-warning" value="Reply" />
+      </div>
+    </div>
+  </form>
 </template>
 
 
 <script>
 export default {
-    name: 'comment-create-form',
-    props: [ 'submissionUrl', 'postId', 'commentId' ],
-    computed: {
-        content: {
-            get ()
-            {
-                return this.$attrs.value;
-            },
-            set ( value )
-            {
-                this.$emit( 'input', value )
-            }
-        }
+  name: "comment-create-form",
+  props: ["submissionUrl", "postId", "commentId"],
+  computed: {
+    content: {
+      get() {
+        this.isStringAGIFUrl(this.$attrs.value);
+        return this.$attrs.value;
+      },
+      set(value) {
+        this.$emit("input", value);
+      }
     }
-  
-    
-    
-}
+  },
+  methods: {
+    isStringAGIFUrl(string) {
+      if (string.includes("http") && string.includes(".gif")) {
+        this.isGif = true;
+        return true;
+      }
+      this.isGif = false;
+      return false;
+    },
+    resetMessage() {
+      this.message = "";
+    }
+  },
+  data() {
+    return {
+      isGif: false
+    };
+  }
+};
 </script>
 

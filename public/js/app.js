@@ -1927,18 +1927,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'comment-create-form',
   props: ['submissionUrl', 'postId', 'commentId'],
   computed: {
     content: {
       get: function get() {
+        this.isStringAGIFUrl(this.$attrs.value);
         return this.$attrs.value;
       },
       set: function set(value) {
         this.$emit('input', value);
       }
     }
+  },
+  methods: {
+    isStringAGIFUrl: function isStringAGIFUrl(string) {
+      if (string.includes('http') && string.includes('.gif')) {
+        this.isGif = true;
+        return true;
+      }
+
+      this.isGif = false;
+      return false;
+    },
+    resetMessage: function resetMessage() {
+      this.message = '';
+    }
+  },
+  data: function data() {
+    return {
+      isGif: false
+    };
   }
 });
 
@@ -38119,39 +38155,83 @@ var render = function() {
     [
       _vm._t("default"),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.content,
-              expression: "content"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "content" },
-          domProps: { value: _vm.content },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.content = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "hidden", name: "post_id" },
-          domProps: { value: _vm.postId }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "hidden", name: "parent_id" },
-          domProps: { value: _vm.commentId }
-        })
-      ]),
+      _vm.isGif
+        ? _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("img", { attrs: { src: _vm.content } }),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn", on: { click: _vm.resetMessage } },
+                [_vm._v("Reset")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "hidden", name: "post_id" },
+                domProps: { value: _vm.postId }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "hidden", name: "parent_id" },
+                domProps: { value: _vm.commentId }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.content,
+                    expression: "content"
+                  }
+                ],
+                attrs: { type: "hidden", name: "content" },
+                domProps: { value: _vm.content },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.content = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "hidden", name: "is_gif" },
+                domProps: { value: _vm.isGif }
+              })
+            ])
+          ])
+        : _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("strong", [_vm._v(" Content ")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.content,
+                      expression: "content"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", name: "content" },
+                  domProps: { value: _vm.content },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.content = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
       _vm._v(" "),
       _vm._m(0)
     ],
@@ -38163,11 +38243,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "btn btn-warning",
-        attrs: { type: "submit", value: "Reply" }
-      })
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("input", {
+          staticClass: "btn btn-warning",
+          attrs: { type: "submit", value: "Reply" }
+        })
+      ])
     ])
   }
 ]

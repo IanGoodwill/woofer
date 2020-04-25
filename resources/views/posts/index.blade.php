@@ -14,9 +14,7 @@ Woofer
 @endif
 
 <div id="app">
-<post-grid-view> </post-grid-view>
 
-<example-component></example-component>
 </div>
 
 @foreach($posts as $post)

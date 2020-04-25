@@ -1,8 +1,16 @@
 @foreach($comments as $comment)
 <div class="display-comment" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
     <strong>{{ $post->username }}</strong>
-    <p>{{ $comment->content }}</p>
-    <a href="" id="reply"></a>
+
+    <p>
+    @if( $comment->is_gif == TRUE )
+    <img src="{{ $comment->content }}">
+    @else
+    {{ $comment->content }}
+    @endif
+    </p>
+
+    <a href="#" id="reply"></a>
 
 
     <div class="float-right" id="app" >

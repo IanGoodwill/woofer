@@ -51,12 +51,18 @@ class CommentController extends Controller
            
         ));
 
-
         $input = $request->all();
         $input['user_id'] = auth()->user()->id;
-    
+     
+        if ( isset($input['is_gif']  ) && ($input['is_gif'] === 'true') ) {
+         
+            $input['is_gif'] = 1;
+            
+        }
+
         Comment::create($input);
    
+    
        
          return redirect('/posts')->with('success', 'Comment saved.');
         }// redirect by default
