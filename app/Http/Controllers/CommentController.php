@@ -79,6 +79,10 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
 
+        $post = Post::findOrFail($id);
+
+        $profile = Profile::findOrFail($post->profile_id);
+
 
         return view( 'comments.show', compact('comment') );
     }
@@ -115,6 +119,7 @@ class CommentController extends Controller
              ));
     
              Comment::whereId($id)->update($validatedData);
+             
              return redirect('/posts')->with('success', 'Comment updated.');
             }
             return redirect('/posts');

@@ -24,7 +24,7 @@
 
     <div class="row">
       <div class="col-md-12">
-        <input type="submit" class="btn btn-warning" value="Reply" />
+        <input type="submit" class="btn btn-warning" value="Update Comment" />
       </div>
     </div>
   </form>
@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "comment-create-form",
+  name: "comment-edit-form",
   props: ["submissionUrl", "postId", "commentId"],
   computed: {
     content: {
@@ -66,4 +66,3 @@ export default {
   }
 };
 </script>
-

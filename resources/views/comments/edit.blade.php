@@ -14,24 +14,28 @@ Edit Comment
 <div class="container-fluid">
     <div class="row h-100 justify-content-center align-items-center">
 
-        <form method="post" action="{{ route( 'comments.update', $comment->id) }}">
+  
+    <p>
+    @if( $comment->is_gif == TRUE )
+    <img src="{{ $comment->content }}">
+    @else
+    {{ $comment->content }}
+    @endif
+    </p>
 
-            <div class="form-group container h-100">
-                @csrf {{-- cross site request forgery. a security mesaure --}}
-                @method('PATCH')
+    <a href="#" id="reply"></a>
 
-                <div class="form-group container h-100">
-                    <label for="content">
-                        <strong> Comment content: </strong>
-                        <br>
-                        <textarea name="content" id="content" cols="30" rows="10">{{ $comment->content }}</textarea>
-                    </label>
-                </div>
 
-                <div class="form-group container h-100">
-                    <input class="btn btn-primary btn-customized align-bottom" type="submit" value="Update Comment">
-        </form>
+    <div class="float-right" id="app" >
+        <comment-edit-form submission-url="{{ route( 'comments.update', $comment->id) }}" v-model="content" > 
+            @csrf
+            @method('PATCH')
+        </comment-edit-form> 
+        <Giphy v-on:image-clicked="imageClicked" /> 
     </div>
+    </div>
+
+
 
         
     <div class="form-group container h-100">

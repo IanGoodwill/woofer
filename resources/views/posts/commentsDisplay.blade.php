@@ -21,7 +21,7 @@
     </div>
 
     <div class="form-group">
-        <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-primary">Edit Comment</a>
+        <a href="{{ route('comments.edit', $comment->id) }}" post-id="{{ $post_id }}" comment-id="{{ $comment->id }}" class="btn btn-primary">Edit Comment</a>
     </div>
 
     <div class="form-group">
