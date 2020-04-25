@@ -1,7 +1,7 @@
 <template>
   <section class="container">
-    <h1 class="column is-full">Comment with a Gif</h1>
-
+  
+    <h3> Search For A Gif! </h3>
     <div class="columns">
       <form @submit="giphySearch" class="column is-one-fifth" action="#" method="GET">
         <div class="field">
@@ -20,8 +20,12 @@
 
       <div class="column is-four-fifths">
       <ul class="columns is-multiline">
-        <li v-for="image in results.data" :key="image" class="column is-one-quarter">
-         <img :src="image.images.fixed_width.url" alt="image.title" :title="image.title">
+        <li v-for="image in results.data" :key="image.id" class="column is-one-quarter">
+         <img 
+         :src="image.images.fixed_width.url"
+          alt="image.title" 
+          :title="image.title"
+         @click="getImageUrl">
         </li>
       </ul>
       </div>
@@ -50,6 +54,11 @@ export default {
       .then( data => { // Store the returned data in our "results."
         this.results = data;
       } );
+    },
+    getImageUrl ( event )
+    {
+      const img = event.target;
+      this.$emit( 'image-clicked', img.src ); // Bubble upward an "imageClicked" event with the img src
     }
   }
 };

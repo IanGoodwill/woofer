@@ -11,7 +11,7 @@ View Post
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                   
+
                     <h4> See posts one by one</h4>
                     @include('partials.errors')
 
@@ -29,7 +29,7 @@ View Post
                     <h4>Display Comments</h4>
 
                     @include('posts.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])
-                    
+
                     <h4>Add comment</h4>
 
                     <form method="post" action="{{ route('comments.store'   ) }}">
@@ -43,7 +43,9 @@ View Post
                             <input type="submit" class="btn btn-success" value="Add Comment" />
                         </div>
 
-                        </form>
+                        
+
+                    </form>
 
                 </div>
             </div>

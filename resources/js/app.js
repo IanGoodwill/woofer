@@ -25,6 +25,8 @@ Vue.component('post-grid-view', require('./components/PostGridView.vue').default
 
 Vue.component('Giphy', require('./components/Giphy.vue').default);
 
+Vue.component('comment-create-form', require('./components/CommentCreateForm.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -33,6 +35,16 @@ Vue.component('Giphy', require('./components/Giphy.vue').default);
 
 const app = new Vue({
     el: '#app',  
+    data: {
+        content: ''
+    },
+    methods: {
+        imageClicked ( imgSrc )
+        {
+            console.log( imgSrc );
+            this.content = imgSrc;
+        }
+    }
 });
 
 

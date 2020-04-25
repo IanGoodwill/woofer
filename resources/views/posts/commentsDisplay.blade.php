@@ -3,22 +3,13 @@
     <strong>{{ $post->username }}</strong>
     <p>{{ $comment->content }}</p>
     <a href="" id="reply"></a>
-    <form method="post" action="{{ route('comments.store') }}">
-        @csrf
 
-        <div class="form-group">
-            <input type="text" name="content" class="form-control" />
-            <input type="hidden" name="post_id" value="{{ $post_id }}" />
-            <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
-        </div>
-        @auth
-        <div class="form-group">
-            <input type="submit" class="btn btn-warning" value="Reply" />
-        </div>
-    </form>
 
-    <div class="float-right" id="app">
-        <Giphy> </Giphy>
+    <div class="float-right" id="app" >
+        <comment-create-form submission-url="{{route('comments.store')}}" post-id="{{ $post_id }}" comment-id="{{ $comment->id }}" v-model="content" > 
+            @csrf
+        </comment-create-form> 
+        <Giphy v-on:image-clicked="imageClicked" /> 
     </div>
 
     <div class="form-group">
@@ -36,5 +27,5 @@
 
     @include('posts.commentsDisplay', ['comments' => $comment->replies])
 </div>
-@endauth
+
 @endforeach

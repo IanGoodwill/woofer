@@ -16,6 +16,7 @@ class CreateCommentsTable extends Migration
         Schema::create( 'comments', function (Blueprint $table ) {
             $table->id();
             $table->longText( 'content' );
+            $table->boolean( 'is_gif' )->default( false );
             $table->unsignedBigInteger( 'profile_id' )->nullable();
             $table->unsignedBigInteger( 'post_id' )->nullable();
             $table->integer('parent_id')->unsigned()->nullable();
