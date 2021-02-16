@@ -32,20 +32,27 @@ View Post
 
                     <h4>Add comment</h4>
 
-                    <form method="post" action="{{ route('comments.store'   ) }}">
+                    <section>
+                        @if( $comment->is_gif == TRUE )
+                        <figure>
+                            <img src="{{ $comment->content }}">
+                        </figure>
+                        @else
+                        <p>
+                            {{ $comment->content }}
+                        </p>
+                        @endif
+                    </section>
 
-                        @csrf
-                        <div class="form-group">
-                            <textarea class="form-control" name="content"></textarea>
-                            <input type="hidden" name="post_id" value="{{ $post->id }}" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-success" value="Add Comment" />
-                        </div>
+                    <a href="#" id="reply"></a>
 
-                        
 
-                    </form>
+                    <div id="app">
+                        <comment-create-form submission-url="{{route('comments.store')}}" comment-id="{{ $comment->id }}" v-model="content">
+                            @csrf
+                        </comment-create-form>
+                        <Giphy v-on:image-clicked="imageClicked" />
+                    </div>
 
                 </div>
             </div>

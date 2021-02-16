@@ -17,14 +17,17 @@
       <div class="col-md-12">
         <div class="form-group">
           <strong>Content</strong>
-          <input type="text" name="content" v-model="content" class="form-control" />
+                <input type="text" name="content"  class="form-control" v-model="content" />
+              <input type="hidden" name="post_id" :value="postId"  />
+        <input type="hidden" name="parent_id" :value="commentId" />
+    
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <input type="submit" class="btn btn-warning" value="Reply" />
+        <input type="submit" class="btn btn-warning" value="New Comment" />
       </div>
     </div>
   </form>

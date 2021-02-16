@@ -111,7 +111,9 @@ class PostController extends Controller
 
         $profile = Profile::findOrFail($post->profile_id);
 
-        return view( 'posts.show', compact('post', 'profile') );
+        $comment = new Comment();
+
+        return view( 'posts.show', compact('post', 'profile', 'comment') );
 
     }
 

@@ -29,6 +29,8 @@ Vue.component('comment-create-form', require('./components/CommentCreateForm.vue
 
 Vue.component('comment-edit-form', require('./components/CommentEditForm.vue').default);
 
+Vue.component('comment-new-comment-form', require('./components/CommentNewCommentForm.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

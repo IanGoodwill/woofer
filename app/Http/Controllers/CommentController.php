@@ -99,6 +99,12 @@ class CommentController extends Controller
 
             $comment = Comment::findOrFail($id);
 
+            if ( isset($comment->is_gif ) && ($comment->is_gif === 'true') ) {
+         
+                $comment->is_gif = 1;
+                
+            }
+
             return view( 'comments.edit', compact('comment') );
         }
         return redirect('/posts');
@@ -119,7 +125,7 @@ class CommentController extends Controller
              ));
     
              Comment::whereId($id)->update($validatedData);
-             
+
              return redirect('/posts')->with('success', 'Comment updated.');
             }
             return redirect('/posts');

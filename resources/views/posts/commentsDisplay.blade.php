@@ -2,23 +2,25 @@
 <div class="display-comment" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
     <strong>{{ $post->username }}</strong>
 
-    <p>
-    @if( $comment->is_gif == TRUE )
-    <img src="{{ $comment->content }}">
-    @else
-    {{ $comment->content }}
-    @endif
-    </p>
+    <section>
+        @if( $comment->is_gif == TRUE )
+        <figure>
+            <img src="{{ $comment->content }}">
+        </figure>
+        @else
+        <p>
+            {{ $comment->content }}
+        </p>
+        @endif
+    </section>
 
-    <a href="#" id="reply"></a>
 
 
-    <div class="float-right" id="app" >
-        <comment-create-form submission-url="{{route('comments.store')}}" post-id="{{ $post_id }}" comment-id="{{ $comment->id }}" v-model="content" > 
-            @csrf
-        </comment-create-form> 
-        <Giphy v-on:image-clicked="imageClicked" /> 
+    <div class="form-group">
+    <a  class="btn btn-primary" href="#" id="reply">Reply</a>
     </div>
+
+  
 
     <div class="form-group">
         <a href="{{ route('comments.edit', $comment->id) }}" post-id="{{ $post_id }}" comment-id="{{ $comment->id }}" class="btn btn-primary">Edit Comment</a>
